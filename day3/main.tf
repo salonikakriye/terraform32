@@ -39,8 +39,8 @@ resource "aws_subnet" "private-subnet" {
   }
 
   resource "aws_nat_gateway" "nat_gateway" {
-    subnet_id = aws_subnet.public_subnet.id
-    allocation_id = aws_eip.nat.eip.id
+    subnet_id = aws_subnet.public-subnet.id
+    allocation_id = aws_eip.nat_eip.id
     tags = {
         Name = "nat-gateway"
     }
@@ -101,7 +101,7 @@ resource "aws_instance" "public_instance" {
     instance_type = var.instance_type
     key_name = var.key_name
     vpc_security_group_ids = [aws_security_group.my_sg.id]
-    subnet_id = aws_subnet.public_subnet.id
+    subnet_id = aws_subnet.public-subnet.id
     associate_public_ip_address = true
     user_data = file("/root/terraform32/day3/user-data.sh")
 
