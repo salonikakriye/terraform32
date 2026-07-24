@@ -115,7 +115,7 @@ resource "aws_instance" "private_instance" {
     instance_type = var.instance_type
     key_name = var.key_name
     vpc_security_group_ids = [aws_security_group.my_sg.id]
-    subnet_id = aws_subnet.private-subnet.id
+    subnet_id = aws_subnet.private_subnet.id
     user_data = file("/root/terraform32/day3/user-data.sh")
 
     tags = {
