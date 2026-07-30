@@ -15,7 +15,7 @@ resource "aws_subnet" "public_subnet_1" {
     }
 }
 
-resource "aws_sunbnet" "public_subnet_2" {
+resource "aws_subnet" "public_subnet_2" {
     cidr_block = var.public_subnet_2_cidr
     vpc_id = aws_vpc.my_vpc.id
     availability_zone = var.public_subnet_2_az
@@ -46,6 +46,7 @@ resource "aws_route_table" "public_rt" {
 resource "aws_route_table_association" "public_rt_assoc_1" {
     route_table_id = aws_route_table.public_rt.id
     subnet_id = aws_subnet.public_subnet_1.id
+    
 }
 
 resource "aws_route_table_association" "public_rt_assoc_2" {

@@ -1,3 +1,3 @@
 output "dns_name" {
-    value = moduel.lb.dns_name
+    value = module.lb.dns_name
 }
