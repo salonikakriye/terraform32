@@ -11,7 +11,7 @@ resource "aws_lb_target_group" "lb_target_group" {
 resource "aws_lb" "ALB" {
     name = "my-alb" 
     internal = false
-    load_balancer_type = "var.lb_type"
+    load_balancer_type = var.lb_type
     security_groups = [var.sg_id]
     subnets = [var.public_subnet_1_id,var.public_subnet_2_id]
     tags = {
