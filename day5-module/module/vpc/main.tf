@@ -7,58 +7,56 @@ resource "aws_vpc" "my_vpc" {
 
 resource "aws_subnet" "public_subnet_1" {
     cidr_block = var.public_subnet_1_cidr
-    vpc_id = aws_vpc.my_vpc.id 
+    vpc_id = aws_vpc.my_vpc.id
     availability_zone = var.public_subnet_1_az
-    map_public_ip_on_launch = true 
+    map_public_ip_on_launch = true
     tags = {
         Name = "public_subnet_1"
     }
 }
 
-resource "aws_subnet" "public_subnet_2" {
+resource "aws_sunbnet" "public_subnet_2" {
     cidr_block = var.public_subnet_2_cidr
-    vpc_id = aws_vpc.my_vpc.id 
+    vpc_id = aws_vpc.my_vpc.id
     availability_zone = var.public_subnet_2_az
-    map_public_ip_on_launch = true 
+    map_public_ip_on_launch = true
     tags = {
         Name = "public_subnet_2"
     }
 }
 
-resource "aws_internet_gateway" "IGW" {
-    vpc_id = aws_vpc.my_vpc.id 
+resource "aws_internet_gateway" "igw" {
+    vpc_id = aws_vpc.my_vpc.id
     tags = {
-        Name = "IGW"
+        Name = "igw"
     }
 }
 
 resource "aws_route_table" "public_rt" {
-    vpc_id = aws_vpc.my_vpc.id 
-
+    vpc_id = aws_vpc.my_vpc.id
     route {
-        gateway_id = aws_internet_gateway.IGW.id 
+        gateway_id = aws_internet_gateway.igw.id
         cidr_block = "0.0.0.0/0"
     }
-
     tags = {
         Name = "public_rt"
     }
 }
 
 resource "aws_route_table_association" "public_rt_assoc_1" {
-    route_table_id = aws_route_table.public_rt.id 
-    subnet_id = aws_subnet.public_subnet_1.id 
+    route_table_id = aws_route_table.public_rt.id
+    subnet_id = aws_subnet.public_subnet_1.id
 }
 
 resource "aws_route_table_association" "public_rt_assoc_2" {
-    route_table_id = aws_route_table.public_rt.id 
-    subnet_id = aws_subnet.public_subnet_2.id 
+    route_table_id = aws_route_table.public_rt.id
+    subnet_id = aws_subnet.public_subnet_2.id
 }
 
 resource "aws_security_group" "sg" {
     name = var.sg_name
-    description = var.sg_name
-    vpc_id = aws_vpc.my_vpc.id 
+    description = "var.sg_name"
+    vpc_id = aws_vpc.my_vpc.id
 
     ingress {
         from_port = 22
@@ -82,6 +80,6 @@ resource "aws_security_group" "sg" {
     }
 
     tags = {
-        Name = "my-security-group"
+        Name = my-security-group
     }
 }
