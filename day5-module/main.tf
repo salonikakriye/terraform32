@@ -2,7 +2,7 @@ module "vpc" {
     source = "./module/vpc"
     vpc_cidr = "10.0.0.0/16"
     public_subnet_1_az = "ap-south-1a"
-    public_subnet_2_az =  "ap-south-2b"
+    public_subnet_2_az =  "ap-south-1b"
     public_subnet_1_cidr = "10.0.0.0/24"
     public_subnet_2_cidr = "10.0.1.0/24"
     sg_name = "my-security-group" 
