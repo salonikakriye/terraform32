@@ -35,7 +35,7 @@ resource "aws_internet_gateway" "UGW" {
 resource "aws_route_table" "public_rt" {
     vpc_id = aws_vpc.my_vpc.id
     route {
-        gateway_id = aws_internet_gateway.igw.id
+        gateway_id = aws_internet_gateway.IGW.id
         cidr_block = "0.0.0.0/0"
     }
     tags = {
