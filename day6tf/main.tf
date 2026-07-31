@@ -1,5 +1,5 @@
 module "vpc" {
-    source = "./module/vpc"
+    source = "./modules/vpc"
     vpc_cidr = var.vpc_cidr
     public_subnet_1_az = var.public_subnet_1_az
     public_subnet_2_az =  var.public_subnet_2_az
@@ -9,7 +9,7 @@ module "vpc" {
 }
 
 module "lb" {
-    source = "./module/lb"
+    source = "./modules/vpc"
     vpc_id = module.vpc.vpc_id 
     sg_id = module.vpc.sg_id 
     public_subnet_1_id = module.vpc.public_subnet_id_1 
@@ -18,7 +18,7 @@ module "lb" {
 }
 
 module "asg" {
-    source = "./module/asg"
+    source = "./modules/vpc"
     image_id = var.image_id
     key_name = var.key_name
     instance_type = var.instance_type
