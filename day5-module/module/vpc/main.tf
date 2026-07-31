@@ -25,10 +25,10 @@ resource "aws_subnet" "public_subnet_2" {
     }
 }
 
-resource "aws_internet_gateway" "igw" {
+resource "aws_internet_gateway" "UGW" {
     vpc_id = aws_vpc.my_vpc.id
     tags = {
-        Name = "igw"
+        Name = "IGW"
     }
 }
 
