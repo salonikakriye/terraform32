@@ -27,6 +27,6 @@ module "asg" {
     min_size =  var.min_size
     max_size =  var.max_size
     target_arn = module.lb.target_group_arn
-    public_subnet_1_id = module.vpc.public_subnet_id_1
-    public_subnet_2_id = module.vpc.public_subnet_id_2
+    public_subnet_1 = module.vpc.public_subnet_id_1 
+    public_subnet_2 = module.vpc.public_subnet_id_2 
 }
