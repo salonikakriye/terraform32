@@ -5,7 +5,7 @@ provider "aws" {
 
 terraform {
     backend "s3" {
-        bucket = "deploywithsaloni.space"
+        bucket = "deploywithsaloni.space" 
         region = "ap-south-1"
         key = "terraform.tfstate"
         profile = "dev"
